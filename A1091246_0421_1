@@ -1,0 +1,28 @@
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class A1091246_0421_1 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("請輸入您的電子郵件地址：");
+        String email = scanner.nextLine();
+
+        boolean isValid = validateEmail(email);
+
+        if (isValid) {
+            System.out.println("您輸入的電子郵件地址格式正確。");
+        } else {
+            System.out.println("您輸入的電子郵件地址格式錯誤。");
+        }
+    }
+
+    public static boolean validateEmail(String email) {
+        // 電子郵件地址的正則表達式
+        String regex = "^[a-z._%+-]+@[a-z.-]+\\.[a-z]{2,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+}
